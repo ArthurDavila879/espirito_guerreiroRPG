@@ -11,9 +11,17 @@ public class Oraculo {
         this.nome = nome;
     }
 
-    public String prologoIntroducao(){
-
-        Random random = new Random();
+    public void prologoIntroducao(){
+       String mensagem = "Ola guerreiro "+warrior.getNome();
+        InOut.MsgDeInformacao("Introdução", mensagem);
+        InOut.MsgDeInformacao("Introdução","Sou o oraculo "+this.nome);
+        InOut.MsgDeInformacao("Introdução","Sua vida atual é "+warrior.getQtdVida());
+    }
+    public String prologoPerdedor(){}
+    public String prologoVencedor(){}
+    
+    public boolean loadLevel01(){
+       Random random = new Random();
         int segredo = random.nextInt(101);
         boolean acertou = false;
         InOut.MsgDeInformacao("Oráculo","Um número secreto foi definido (1 a 100), acerte ou perca vida");
@@ -33,11 +41,30 @@ public class Oraculo {
             }
         }while (!acertou);
 
-        return "Número secreto "+segredo+ " foi acertado, parabens. Sua vida atual é "+warrior.getQtdVida();
+        return true;
     }
-    public String prologoPerdedor(){}
-    public String prologoVencedor(){}
-    public boolean loadLevel01(){}
-    public boolean loadLevel02(){}
+    public boolean loadLevel02(){
+    String charada1 = "nuvem";
+    InOut.MsgDeInformacao("Charada",warrior.getNome()+"Agora você ira tentar advinhar uma charada");
+    String resposta1 = "";
+    
+    while(!(charada1.equals(resposta1))){
+     resposta1 = InOut.leString("Oque é oque é, anda sem pernas e chora sem olhos?");
+    if(charada1.equals(resposta1)){
+        InOut.MsgDeInformacao("Charada", "Parabens você acertou a primeira charada");}
+    else{ 
+        InOut.MsgDeAviso("Charada","Errou");
+        warrior.setQtdVida(warrior.getQtdVida()-1);}
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    return true;
+    }
     public boolean decidirVidaExtra(String frase){}
 }
