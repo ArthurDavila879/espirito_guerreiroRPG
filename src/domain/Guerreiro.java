@@ -6,6 +6,7 @@ public class Guerreiro {
     private String nome;
     private int qtdVida;
     private Bolsa myBolsa;
+    private int danoWarrior;
 
 
     public Guerreiro(){}
@@ -27,6 +28,12 @@ public class Guerreiro {
                 char escolha = InOut.leChar("Deseja equipar o item? (S/N)");
                 if (escolha == 'S'){
                     myBolsa.equipar(itemAdquirido);
+                    if (i.getTipoitem().equals("Armadura")){
+                        this.qtdVida += i.getAtributovida();
+                    }
+                    if (i.getTipoitem().equals("Arma")){
+                        this.danoWarrior += i.getAtributodano();
+                    }
                 }
             }
 
@@ -41,13 +48,9 @@ public class Guerreiro {
     }
 
     public String vidaExtra() {
-        InOut.MsgDeInformacao("Implore pela sua vida","O oraculo pode te conceder mais uma vida ");
-        Random random = new Random();
-        int escolha = random.nextInt(2);
-        if (escolha == 0)return "Sem vida extra";
-        if (escolha == 1)return "Vida extra";
-
-        return "";
+        InOut.MsgDeInformacao("Implore pela sua vida", "O oraculo pode te conceder mais uma vida ");
+        String misericordia = InOut.leString("IMPLORE VERME");
+        return misericordia;
     }
 
     public String getNome() {

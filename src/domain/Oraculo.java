@@ -18,7 +18,9 @@ public class Oraculo {
         InOut.MsgDeInformacao("Introdução","Sua vida atual é "+warrior.getQtdVida());
     }
     public String prologoPerdedor(){}
-    public String prologoVencedor(){}
+    public String prologoVencedor(){
+        
+    }
     
     public boolean loadLevel01(){
        Random random = new Random();
@@ -48,23 +50,43 @@ public class Oraculo {
     InOut.MsgDeInformacao("Charada",warrior.getNome()+"Agora você ira tentar advinhar uma charada");
     String resposta1 = "";
     
-    while(!(charada1.equals(resposta1))){
-     resposta1 = InOut.leString("Oque é oque é, anda sem pernas e chora sem olhos?");
-    if(charada1.equals(resposta1)){
-        InOut.MsgDeInformacao("Charada", "Parabens você acertou a primeira charada");}
-    else{ 
-        InOut.MsgDeAviso("Charada","Errou");
-        warrior.setQtdVida(warrior.getQtdVida()-1);}
+    while(!(charada1.equals(resposta1))) {
+        resposta1 = InOut.leString("Oque é oque é, anda sem pernas e chora sem olhos?");
+        if (charada1.equals(resposta1)) {
+            InOut.MsgDeInformacao("Charada", "Parabens você acertou a primeira charada");
+        } else {
+            InOut.MsgDeAviso("Charada", "Errou");
+            warrior.setQtdVida(warrior.getQtdVida() - 1);
+        }
     }
-    
-    
-    
-    
-    
-    
-    
-    
     return true;
     }
-    public boolean decidirVidaExtra(String frase){}
+    public boolean decidirVidaExtra(String frase){
+        if(warrior.vidaExtra().length() < 5){
+            return false;
+        }
+        return true;
+    }
+    public boolean loadLevel03(){
+        String nomeBoss;
+        int vidaBoss;
+        int danoBoss;
+        danoBoss = 37;
+        vidaBoss = 30;
+        nomeBoss = "Cryptoros, o Oráculo das Respostas Impossíveis";
+        InOut.MsgDeInformacao("BOSS FIGHT", "O boss: Cryptoros, o Oráculo das Respostas Impossíveis ressurgiu\n" + danoBoss + " De dano\n" + vidaBoss + " De vida");
+        if(vidaWarrior < danoBoss){
+            InOut.MsgDeAviso("DERROTA", "Você perdeu para o verdadeiro Oráculo");
+            return false;
+        }
+        else if(vidaWarrior = danoBoss && danoWarrior = vidaBoss) {
+            InOut.MsgDeAviso("EMPATE", "Os dois oráculos previram o mesmo fim — e, ao fazê-lo, anularam seus destinos em um empate inevitável.");
+            return true;
+        }
+        else{
+            InOut.MsgDeAviso("VITÓRIA", "Ao transcender todas as previsões, você supera o impossível e ascende como o Oráculo Master, soberano absoluto do destino.");
+            return true;
+        }
+    }
 }
+
