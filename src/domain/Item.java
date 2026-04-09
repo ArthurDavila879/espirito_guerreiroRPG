@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Item {
@@ -10,7 +11,7 @@ public class Item {
     private int atributodano;
     private int atributovida;
     
-    private List<Item> itensTotal;
+    private List<Item> itensTotal = new ArrayList<>();
 
     public List<Item> getItensTotal() {
         return itensTotal;

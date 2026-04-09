@@ -1,9 +1,10 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Bolsa {
-    private List<Item> itens;
+    private List<Item> itens = new ArrayList<>();
 
     public Bolsa(List<Item> itens) {
         this.itens = itens;
@@ -16,6 +17,9 @@ public class Bolsa {
                 System.out.println("Item equipado");
             }
         }
+    }
+
+    public Bolsa() {
     }
 
     public List<Item> getItens() {

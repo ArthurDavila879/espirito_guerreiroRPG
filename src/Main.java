@@ -1,28 +1,42 @@
-import domain.Guerreiro;
-import domain.InOut;
-import domain.Oraculo;
+import domain.*;
 
 public class Main {
     public static void main(String[] args) {
         String nome = InOut.leString("INSIRA SEU NOME");
         Guerreiro warrior = new Guerreiro();
-        warrior.setNome(nome);
         Oraculo oraculo = new Oraculo();
-        oraculo.setwarrior(warrior);
+        Bolsa bolsa = new Bolsa();
+        Item item = new Item();
+
+        warrior.setNome(nome);
         oraculo.definirNome("Aethryon");
+
+        oraculo.setwarrior(warrior);
+        warrior.setMyBolsa(bolsa);
+
+
+
+
         oraculo.prologoIntroducao();
-        oraculo.loadLevel01();
-        if (oraculo.loadLevel01()) {
+        if(oraculo.loadLevel01()){
             warrior.ganharItem();
         }
-        oraculo.loadLevel02();
+
+        else if (warrior.getQtdVida()==0){
+            oraculo.prologoPerdedor();
+        }
+
         if (oraculo.loadLevel02()) {
             warrior.ganharItem();
         }
         oraculo.loadLevel03();
         if (!oraculo.loadLevel03()) {
             oraculo.prologoPerdedor();
-        } else {
+        }
+        else if (warrior.getQtdVida()==0){
+            oraculo.prologoPerdedor();
+        }
+        else {
             oraculo.prologoVencedor();
         }
     }

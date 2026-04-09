@@ -15,7 +15,9 @@ public class Oraculo {
        String mensagem = "Ola guerreiro "+warrior.getNome();
         InOut.MsgDeInformacao("Introdução", mensagem);
         InOut.MsgDeInformacao("Introdução","Sou o oraculo "+this.nome);
+        warrior.sortearVidas();
         InOut.MsgDeInformacao("Introdução","Sua vida atual é "+warrior.getQtdVida());
+
     }
     public void prologoPerdedor(){
         InOut.MsgDeInformacao("PÁRABENS ", warrior.getNome() + "Ao ser derrotado pelo Oráculo, você provou que não é digno de se tornar meu sucessor como Oráculo Master");
@@ -39,21 +41,30 @@ public class Oraculo {
                 InOut.MsgDeAviso("Aviso","Palpite é menor que o segredo");
                 warrior.setQtdVida(warrior.getQtdVida()-1);
             }
-            else if (palpite == segredo){
+             if (palpite == segredo){
                 acertou = true;
+                return true;
+
+
+                }
+             if (warrior.getQtdVida()== 0){
+                InOut.MsgDeAviso("Morte","Morte precoce");
+                break;
+
+
 
             }
         }while (!acertou);
 
 
-        return true;
+        return false;
     }
     public boolean loadLevel02(){
     String charada1 = "nuvem";
     InOut.MsgDeInformacao("Charada",warrior.getNome()+"Agora você ira tentar advinhar uma charada");
     String resposta1 = "";
     
-    while(!(charada1.equals(resposta1))) {
+    while((charada1.equals(resposta1))) {
         resposta1 = InOut.leString("Oque é oque é, anda sem pernas e chora sem olhos?");
         if (charada1.equals(resposta1)) {
             InOut.MsgDeInformacao("Charada", "Parabens você acertou a primeira charada");
