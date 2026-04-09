@@ -15,6 +15,10 @@ public class Guerreiro {
         this.qtdVida = qtdVida;
         this.myBolsa = myBolsa;
     }
+
+    public int getDanoWarrior(){
+        return this.danoWarrior;
+    }
     
     public void ganharItem(boolean levelUp){
         Random random = new Random();
@@ -49,7 +53,7 @@ public class Guerreiro {
 
     public String vidaExtra() {
         InOut.MsgDeInformacao("Implore pela sua vida", "O oraculo pode te conceder mais uma vida ");
-        String misericordia = InOut.leString("IMPLORE VERME");
+        String misericordia = InOut.leString("IMPLORE POR MAIS UMA CHANCE");
         return misericordia;
     }
 

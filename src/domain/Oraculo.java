@@ -17,9 +17,11 @@ public class Oraculo {
         InOut.MsgDeInformacao("Introdução","Sou o oraculo "+this.nome);
         InOut.MsgDeInformacao("Introdução","Sua vida atual é "+warrior.getQtdVida());
     }
-    public String prologoPerdedor(){}
-    public String prologoVencedor(){
-        
+    public void prologoPerdedor(){
+        InOut.MsgDeInformacao("PÁRABENS ", warrior.getNome() + "Ao ser derrotado pelo Oráculo, você provou que não é digno de se tornar meu sucessor como Oráculo Master");
+    }
+    public void prologoVencedor(){
+        InOut.MsgDeInformacao("PÁRABENS ", warrior.getNome() + "Ao derrotar o Oráculo, provaste teu valor e és digno de tomar meu lugar como o novo Oráculo Master");
     }
     
     public boolean loadLevel01(){
@@ -75,11 +77,11 @@ public class Oraculo {
         vidaBoss = 30;
         nomeBoss = "Cryptoros, o Oráculo das Respostas Impossíveis";
         InOut.MsgDeInformacao("BOSS FIGHT", "O boss: Cryptoros, o Oráculo das Respostas Impossíveis ressurgiu\n" + danoBoss + " De dano\n" + vidaBoss + " De vida");
-        if(vidaWarrior < danoBoss){
+        if(warrior.getQtdVida() < danoBoss){
             InOut.MsgDeAviso("DERROTA", "Você perdeu para o verdadeiro Oráculo");
             return false;
         }
-        else if(vidaWarrior = danoBoss && danoWarrior = vidaBoss) {
+        else if(warrior.getQtdVida() == danoBoss && warrior.getDanoWarrior() == vidaBoss) {
             InOut.MsgDeAviso("EMPATE", "Os dois oráculos previram o mesmo fim — e, ao fazê-lo, anularam seus destinos em um empate inevitável.");
             return true;
         }
