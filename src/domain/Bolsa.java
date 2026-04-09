@@ -13,6 +13,7 @@ public class Bolsa {
         for (Item i : itens) {
             if (idItem == i.getIdItem()) {
                 i.setEquipado(true);
+                System.out.println("Item equipado");
             }
         }
     }

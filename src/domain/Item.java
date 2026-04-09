@@ -25,14 +25,15 @@ public class Item {
         this.atributovida = atributovida;
     }
     public void imprimirDados(){
-        System.out.println("ID item: "+this.idItem);
-        System.out.println("Nome do item: "+this.nomeitem);
-        System.out.println("Tipo de item: "+this.tipoitem);
-        System.out.println("Atributos de item: " + this.atributodano + " de dano, " + this.atributovida + " de vida");
+        InOut.MsgDeInformacao("Item","ID item: "+this.idItem);
+        InOut.MsgDeInformacao("Item","Nome do item: "+this.nomeitem);
+        InOut.MsgDeInformacao("Item","Tipo de item: "+this.tipoitem);
+        InOut.MsgDeInformacao("Item","Atributos de item: " + this.atributodano + " de dano, " + this.atributovida + " de vida");
        if (this.equipado){
-           System.out.println("Item equipado");
+           InOut.MsgDeInformacao("Item","Item equipado");
        }
-       else System.out.println("Item desequipado");
+       else  InOut.MsgDeInformacao("Item","Item desequipado");
+
     }
 
     public int getIdItem() {
@@ -41,6 +42,9 @@ public class Item {
 
     public void setIdItem(int idItem) {
         this.idItem = idItem;
+    }
+
+    public Item() {
     }
 
     public String getTipoitem() {
