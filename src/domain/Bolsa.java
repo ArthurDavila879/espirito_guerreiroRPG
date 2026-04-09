@@ -17,6 +17,11 @@ public class Bolsa {
         }
     }
 
+    public List<Item> getItens() {
+        return itens;
+    }
+    
+
     public void desequipar(int idItem) {
         for (Item i : itens) {
             if (idItem == i.getIdItem()) {
