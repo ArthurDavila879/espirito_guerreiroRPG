@@ -23,7 +23,7 @@ public class Oraculo {
     public void prologoVencedor(){
         InOut.MsgDeInformacao("PÁRABENS ", warrior.getNome() + "Ao derrotar o Oráculo, provaste teu valor e és digno de tomar meu lugar como o novo Oráculo Master");
     }
-    
+
     public boolean loadLevel01(){
        Random random = new Random();
         int segredo = random.nextInt(101);
@@ -44,6 +44,7 @@ public class Oraculo {
 
             }
         }while (!acertou);
+
 
         return true;
     }
@@ -89,6 +90,10 @@ public class Oraculo {
             InOut.MsgDeAviso("VITÓRIA", "Ao transcender todas as previsões, você supera o impossível e ascende como o Oráculo Master, soberano absoluto do destino.");
             return true;
         }
+    }
+
+    public void setwarrior(Guerreiro warrior) {
+        this.warrior = warrior;
     }
 }
 

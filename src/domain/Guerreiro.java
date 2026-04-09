@@ -20,7 +20,7 @@ public class Guerreiro {
         return this.danoWarrior;
     }
     
-    public void ganharItem(boolean levelUp){
+    public void ganharItem(){
         Random random = new Random();
         Item item = new Item();
         item.criarItem();
