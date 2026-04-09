@@ -28,7 +28,7 @@ public class Oraculo {
 
     public boolean loadLevel01(){
        Random random = new Random();
-        int segredo = random.nextInt(101);
+        int segredo = random.nextInt(100) + 1;
         boolean acertou = false;
         InOut.MsgDeInformacao("Oráculo","Um número secreto foi definido (1 a 100), acerte ou perca vida");
         do {
@@ -47,7 +47,7 @@ public class Oraculo {
 
 
                 }
-             if (warrior.getQtdVida()== 0){
+             if (warrior.getQtdVida() <= 0){
                 InOut.MsgDeAviso("Morte","Morte precoce");
                 break;
 
@@ -61,19 +61,22 @@ public class Oraculo {
     }
     public boolean loadLevel02(){
     String charada1 = "nuvem";
-    InOut.MsgDeInformacao("Charada",warrior.getNome()+"Agora você ira tentar advinhar uma charada");
-    String resposta1 = "";
-    
-    while((charada1.equals(resposta1))) {
-        resposta1 = InOut.leString("Oque é oque é, anda sem pernas e chora sem olhos?");
-        if (charada1.equals(resposta1)) {
-            InOut.MsgDeInformacao("Charada", "Parabens você acertou a primeira charada");
-        } else {
-            InOut.MsgDeAviso("Charada", "Errou");
-            warrior.setQtdVida(warrior.getQtdVida() - 1);
+    InOut.MsgDeInformacao("Charada",warrior.getNome()+" Agora você irá tentar adivinhar uma charada");
+
+    while (warrior.getQtdVida() > 0) {
+        String resposta1 = InOut.leString("O que é o que é, anda sem pernas e chora sem olhos?");
+
+        if (charada1.equalsIgnoreCase(resposta1.trim())) {
+            InOut.MsgDeInformacao("Charada", "Parabéns, você acertou a primeira charada");
+            return true;
         }
+
+        InOut.MsgDeAviso("Charada", "Errou");
+        warrior.setQtdVida(warrior.getQtdVida() - 1);
+        InOut.MsgDeAviso("Charada", "Vida restante: " + warrior.getQtdVida());
     }
-    return true;
+
+    return false;
     }
     public boolean decidirVidaExtra(String frase){
         if(warrior.vidaExtra().length() < 5){
@@ -88,7 +91,7 @@ public class Oraculo {
         danoBoss = 37;
         vidaBoss = 30;
         nomeBoss = "Cryptoros, o Oráculo das Respostas Impossíveis";
-        InOut.MsgDeInformacao("BOSS FIGHT", "O boss: Cryptoros, o Oráculo das Respostas Impossíveis ressurgiu\n" + danoBoss + " De dano\n" + vidaBoss + " De vida");
+        InOut.MsgDeInformacao("BOSS FIGHT", "O boss: " + nomeBoss + " ressurgiu\n" + danoBoss + " De dano\n" + vidaBoss + " De vida");
         if(warrior.getQtdVida() < danoBoss){
             InOut.MsgDeAviso("DERROTA", "Você perdeu para o verdadeiro Oráculo");
             return false;

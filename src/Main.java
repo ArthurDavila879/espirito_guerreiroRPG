@@ -6,7 +6,6 @@ public class Main {
         Guerreiro warrior = new Guerreiro();
         Oraculo oraculo = new Oraculo();
         Bolsa bolsa = new Bolsa();
-        Item item = new Item();
 
         warrior.setNome(nome);
         oraculo.definirNome("Aethryon");
@@ -14,30 +13,25 @@ public class Main {
         oraculo.setwarrior(warrior);
         warrior.setMyBolsa(bolsa);
 
-
-
-
         oraculo.prologoIntroducao();
-        if(oraculo.loadLevel01()){
-            warrior.ganharItem();
-        }
 
-        else if (warrior.getQtdVida()==0){
+        if (!oraculo.loadLevel01()) {
             oraculo.prologoPerdedor();
+            return;
         }
+        warrior.ganharItem();
 
-        if (oraculo.loadLevel02()) {
-            warrior.ganharItem();
+        if (!oraculo.loadLevel02()) {
+            oraculo.prologoPerdedor();
+            return;
         }
-        oraculo.loadLevel03();
+        warrior.ganharItem();
+
         if (!oraculo.loadLevel03()) {
             oraculo.prologoPerdedor();
+            return;
         }
-        else if (warrior.getQtdVida()==0){
-            oraculo.prologoPerdedor();
-        }
-        else {
-            oraculo.prologoVencedor();
-        }
+
+        oraculo.prologoVencedor();
     }
 }

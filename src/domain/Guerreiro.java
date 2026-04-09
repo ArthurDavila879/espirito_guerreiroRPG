@@ -24,13 +24,13 @@ public class Guerreiro {
         Random random = new Random();
         Item item = new Item();
         item.criarItem();
-        int itemAdquirido = random.nextInt(21)+1;
+        int itemAdquirido = random.nextInt(20)+1;
         for(Item i : item.getItensTotal()){
             if(i.getIdItem()==itemAdquirido){
                 myBolsa.getItens().add(i);
                 i.imprimirDados();
                 char escolha = InOut.leChar("Deseja equipar o item? (S/N)");
-                if (escolha == 'S'){
+                if (Character.toUpperCase(escolha) == 'S'){
                     myBolsa.equipar(itemAdquirido);
                     if (i.getTipoitem().equals("Armadura")){
                         this.qtdVida += i.getAtributovida();
