@@ -30,10 +30,8 @@ public class Main {
             warrior.ganharItem();
         }
         oraculo.loadLevel03();
-        if (!oraculo.loadLevel03()) {
-            oraculo.prologoPerdedor();
-        }
-        else if (warrior.getQtdVida()==0){
+
+        if (warrior.getQtdVida()==0){
             oraculo.prologoPerdedor();
         }
         else {

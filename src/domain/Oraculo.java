@@ -61,10 +61,10 @@ public class Oraculo {
     }
     public boolean loadLevel02(){
     String charada1 = "nuvem";
-    InOut.MsgDeInformacao("Charada",warrior.getNome()+"Agora você ira tentar advinhar uma charada");
+    InOut.MsgDeInformacao("Charada",warrior.getNome()+" Agora você ira tentar advinhar uma charada");
     String resposta1 = "";
     
-    while((charada1.equals(resposta1))) {
+    while(!(charada1.equals(resposta1))) {
         resposta1 = InOut.leString("Oque é oque é, anda sem pernas e chora sem olhos?");
         if (charada1.equals(resposta1)) {
             InOut.MsgDeInformacao("Charada", "Parabens você acertou a primeira charada");
@@ -88,16 +88,18 @@ public class Oraculo {
         danoBoss = 37;
         vidaBoss = 30;
         nomeBoss = "Cryptoros, o Oráculo das Respostas Impossíveis";
+
         InOut.MsgDeInformacao("BOSS FIGHT", "O boss: Cryptoros, o Oráculo das Respostas Impossíveis ressurgiu\n" + danoBoss + " De dano\n" + vidaBoss + " De vida");
         if(warrior.getQtdVida() < danoBoss){
             InOut.MsgDeAviso("DERROTA", "Você perdeu para o verdadeiro Oráculo");
+            warrior.setQtdVida(0);
             return false;
         }
         else if(warrior.getQtdVida() == danoBoss && warrior.getDanoWarrior() == vidaBoss) {
             InOut.MsgDeAviso("EMPATE", "Os dois oráculos previram o mesmo fim — e, ao fazê-lo, anularam seus destinos em um empate inevitável.");
             return true;
         }
-        else{
+        else  {
             InOut.MsgDeAviso("VITÓRIA", "Ao transcender todas as previsões, você supera o impossível e ascende como o Oráculo Master, soberano absoluto do destino.");
             return true;
         }
