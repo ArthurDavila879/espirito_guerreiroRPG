@@ -14,6 +14,21 @@ public class Guerreiro {
         this.qtdVida = qtdVida;
         this.myBolsa = myBolsa;
     }
+    
+    public void ganharItem(boolean levelUp){
+        Random random = new Random();
+        int itemAdquirido = random.nextInt(21)+1;
+        Item item;
+        for(Item i : item.getItensTotal()){
+            if(i.getIdItem()==itemAdquirido){
+                ;
+                
+                
+            }
+            InOut.MsgDeInformacao("Item Adquirido",i.imprimirDados());
+        }
+    
+    }
 
     public int sortearVidas(){
         Random random = new Random();
