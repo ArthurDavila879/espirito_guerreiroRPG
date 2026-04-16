@@ -30,7 +30,7 @@ public class Guerreiro {
                 myBolsa.getItens().add(i);
                 i.imprimirDados();
                 char escolha = InOut.leChar("Deseja equipar o item? (S/N)");
-                if (escolha == 'S'){
+                if (escolha == 'S' || escolha == 's'){
                     myBolsa.equipar(itemAdquirido);
                     if (i.getTipoitem().equals("Armadura")){
                         this.qtdVida += i.getAtributovida();
@@ -51,11 +51,6 @@ public class Guerreiro {
         return this.qtdVida;
     }
 
-    public String vidaExtra() {
-        InOut.MsgDeInformacao("Implore pela sua vida", "O oraculo pode te conceder mais uma vida ");
-        String misericordia = InOut.leString("IMPLORE POR MAIS UMA CHANCE");
-        return misericordia;
-    }
 
     public String getNome() {
         return nome;
@@ -73,11 +68,12 @@ public class Guerreiro {
         this.qtdVida = qtdVida;
     }
 
-    public Bolsa getMyBolsa() {
-        return myBolsa;
-    }
+
 
     public void setMyBolsa(Bolsa myBolsa) {
         this.myBolsa = myBolsa;
+    }
+    public void imprimirGuerreiro(){
+        InOut.MsgDeInformacao("Status","Vida atual: "+this.getQtdVida()+"\nDano atual: "+this.danoWarrior);
     }
 }

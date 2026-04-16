@@ -26,10 +26,7 @@ public class Item {
         this.atributovida = atributovida;
     }
     public void imprimirDados(){
-        InOut.MsgDeInformacao("Item","ID item: "+this.idItem);
-        InOut.MsgDeInformacao("Item","Nome do item: "+this.nomeitem);
-        InOut.MsgDeInformacao("Item","Tipo de item: "+this.tipoitem);
-        InOut.MsgDeInformacao("Item","Atributos de item: " + this.atributodano + " de dano, " + this.atributovida + " de vida");
+        InOut.MsgDeInformacao("Item","ID item: "+this.idItem+"\nNome do item: "+this.nomeitem+"\n Tipo de item: "+this.tipoitem+"\nAtributos de item: " + this.atributodano + " de dano, " + this.atributovida + " de vida");
        if (this.equipado){
            InOut.MsgDeInformacao("Item","Item equipado");
        }
